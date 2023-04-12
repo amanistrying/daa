@@ -41,29 +41,41 @@ string commonsuffix(string s1,string s2)
 }
 
 int main() {
-    int a1 = -2;
+    int a1 = -1;
+    int a2 = -2;
     vector<string> s;
     string word;
-    cout << "Enter words (enter $ to stop):\n";
     while (cin >> word && word != "$") {
         s.push_back(word);
     }
     string y="";
+    string l="";
     for (int i=0; i < s.size()-1; i++){
         vector<string> x;
         x.push_back(s[i]);
         x.push_back(s[i+1]);
         string z = longestCommonPrefix(x);
         string q = commonsuffix(s[i],s[i+1]);
-        if(q.length()>z.length()){
-            z = q;
-            a1 = -1;
+        if(q.length()>l.length()){
+            l = q;
+            a1 = 0;
         }
         if(z.length()>y.length()){
             y = z;
+            a2 = 0;
         }
     }
-    cout << y << endl;
-    cout << a1 << endl;
+    if (a2==0){
+        cout << y << endl;
+    }
+    else{
+        cout << a2 << endl;
+    }
+    if (a1==0){
+        cout << l << endl;
+    }
+    else{
+        cout << a1 << endl;
+    }
     return 0;
 }
